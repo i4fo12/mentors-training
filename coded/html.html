@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="cx.css">  
+  <title>Grading App - Student Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .student-details {
+      padding: 20px;
+      border: 1px solid #ccc;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .student-details h2 {
+      margin-top: 0;
+    }
+
+    .action-icons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .action-icons i {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    
+  <h1>Student Details 🤓</h1>
+
+  <div class="student-details">
+    <h2 id="student-name"></h2> 
+    <h3 id="student-Gradingfinalproject"></h3> 
+    <p  id="student-email"><a href="#">
+      <i class="fas fa-envelope"></i> Send Email</a>
+    </p>
+    <p id="student-Snack"></p>
+    <p id="student-emojis"></p>
+
+    <div class="action-icons">
+      <a href="https://www.google.com/gmail/about/">
+        <i class="fas fa-envelope"></i> Send Email</a>
+     
+    
+    </div>
+  </div>
+  <script>
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const studentId = parseInt(urlParams.get('id'));
+
+    function getStudentDetails(studentId) {
+
+      const students = [
+        { id: 1, name: 'mohamed ', Gradingfinalproject: '98.9' ,  email: 'mohammad@gmail.com'  , snack:'grape', emojis:' 🥸' },
+        { id: 2, name: 'ahmed ',  Gradingfinalproject:'99' , email: 'ahmed@gmail.com', snack:' apple', emojis:' 😁'},
+        { id: 3, name: 'ali ', Gradingfinalproject: '97' ,email: 'ali@gmail.com' , snack:'option', emojis:' 😀'},
+        { id: 4, name: 'Salem ', Gradingfinalproject: '89' ,email: 'Salem@gmail.com' , snack:' orange', emojis:' 😄'},
+        { id: 5, name: 'fahad ', Gradingfinalproject: '91' ,email: 'fahad@gmail.com' , snack:'tomato', emojis:' 😆'},
+        { id: 6, name: 'alaa ', Gradingfinalproject:'98' , email: 'alaa@gmail.com' , snack:'watermelon', emojis:' 😄'},
+        { id: 7, name: 'Abdullah ', Gradingfinalproject:'99.9' , email: ' Abdullah@gmail.com' , snack:'banana', emojis:' 🥹'},
+        { id: 8, name: 'Salman ', Gradingfinalproject:'95' ,email: 'Salman@gmail.com' , snack:'potatoes', emojis:' 😅'},
+        { id: 9, name: 'Anas ', Gradingfinalproject:'84' ,email: 'Anas@gmail.com' , snack:'cookies', emojis:'😂'},
+        { id: 10, name: 'Abdulrahman ', Gradingfinalproject:'77' ,email: ' Abdulrahman@gmail.com' , snack:'Snack: chips', emojis:' 🤣'},
+        { id: 11, name: 'yusef ', Gradingfinalproject:'79' ,email: 'yusef@gmail.com' , snack:'milk', emojis:'emojis: 🥲'},
+        { id: 12, name: 'mishary ', Gradingfinalproject: '87' ,email: ' mishary@gmail.com' , snack:' juice', emojis:'😇'},
+        { id: 13, name: 'omar ', Gradingfinalproject:'88' , email: ' omar@gmail.com' , snack:'popcorn', emojis:' 🙂'},
+        { id: 14, name: 'abdalmajeed ', Gradingfinalproject:'92' ,email: 'abdalmajeed@gmail.com' , snack:' sambosa', emojis:'🙃'},
+        { id: 15, name: 'saleh ',Gradingfinalproject:'94' ,email: 'saleh@gmail.com' , snack:'cake', emojis:' 😎'},
+
+      
+      ];
+   
+    
+      return students.find(student => student.id === studentId);
+    }
+
+    
+    const student = getStudentDetails(studentId);
+
+    if (student) {
+      const studentName = document.getElementById('student-name');
+      const studentEmail = document.getElementById('student-email');
+      const studentSnack = document.getElementById('student-Snack');
+      const studentGradingfinalproject = document.getElementById('student-Gradingfinalproject');
+      const studentemojis = document.getElementById('student-emojis');
+
+
+      studentName.textContent = 'Name: ' + student.name;
+      studentEmail.textContent = 'Email: ' + student.email;
+      studentSnack.textContent = 'Snack: ' + student.snack;
+      studentGradingfinalproject .textContent = 'final project: ' + student.Gradingfinalproject;
+      studentemojis .textContent ='Emojis: ' +  student.emojis ;
+  
+      studentEmail.querySelector('a').href = 'mailto:' + student.email;
+    }
+    function sendEmail() {
+      const emailLink = document.querySelector('#student-email a');
+      window.location.href = emailLink.href;
+    }
+  </script>
+</body>
+</html>
