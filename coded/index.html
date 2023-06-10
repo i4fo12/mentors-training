@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grading App - Student List</title>
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .search-bar {
+      margin-bottom: 20px;
+    }
+
+    .student-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .student-list li {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function filterStudents() {
+      const input = document.getElementById('search');
+      const filter = input.value.toLowerCase();
+      const studentList = document.getElementsByClassName('student-list')[0];
+      const students = studentList.getElementsByTagName('li');
+
+      for (let i = 0; i < students.length; i++) {
+        const student = students[i];
+        const name = student.textContent.toLowerCase();
+        if (name.indexOf(filter) > -1) {
+          student.style.display = '';
+        } else {
+          student.style.display = 'none';
+        }
+      }
+    }
+
+    function openStudentDetails(studentId) {
+      window.location.href = 'html.html?id=' + studentId;
+    }
+  </script>
+</head>
+<body>
+  <h1> Student List 🥸</h1>
+
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search..." onkeyup="filterStudents()">
+  </div>
+
+  <ul class="student-list">
+    <li onclick="openStudentDetails(1)">mohamed </li>
+    <li onclick="openStudentDetails(2)">ahmed</li>
+    <li onclick="openStudentDetails(3)">ali</li>
+    <li onclick="openStudentDetails(4)">Salem</li>
+    <li onclick="openStudentDetails(5)">fahad</li>
+    <li onclick="openStudentDetails(6)">alaa</li>
+    <li onclick="openStudentDetails(7)">Abdullah</li>
+    <li onclick="openStudentDetails(8)">Salman</li>
+    <li onclick="openStudentDetails(9)">Anas</li>
+    <li onclick="openStudentDetails(10)">Abdulrahman</li>
+    <li onclick="openStudentDetails(11)">yusef</li>
+    <li onclick="openStudentDetails(12)">mishary</li>
+    <li onclick="openStudentDetails(13)">omar</li>
+    <li onclick="openStudentDetails(14)">abdalmajeed</li>
+    <li onclick="openStudentDetails(15)">saleh</li>
+  </ul>
+</body>
+</html>
